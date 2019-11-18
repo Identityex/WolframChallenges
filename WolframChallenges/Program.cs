@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using WolframChallenges.Challenges;
 using WolframChallenges.Shared;
 
 namespace WolframChallenges
@@ -12,6 +13,21 @@ namespace WolframChallenges
         {
             DependencyInjection.BuildDependencyInjectionContainer();
 
+            RunExponentiation();
+            //Pause to read output
+            Console.ReadLine();
+        }
+
+        public static void RunExponentiation()
+        {
+
+            Algorithms alg = DependencyInjection.Container.Resolve<Algorithms>();
+            var num = alg.Exponentiation(2, 18);
+            Console.WriteLine(num);
+        }
+
+        public static void RunRiffle()
+        {
             List<List<object>> objectList = new List<List<object>>
             {
                 new List<object>
@@ -30,8 +46,6 @@ namespace WolframChallenges
 
 
             Console.WriteLine(listString);
-            //Pause to read output
-            Console.ReadLine();
         }
     }
 }
