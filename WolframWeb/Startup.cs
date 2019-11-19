@@ -26,12 +26,17 @@ namespace WolframWeb
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
+            services.AddMvc(c => {
+                c.EnableEndpointRouting = false;
+            });
             services.AddControllersWithViews();
 
             services.AddTransient<WolframDBContext>();
             services.AddTransient<DeriffleList>();
             services.AddTransient<IUtilities, Utilities>();
             services.AddAntiforgery();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -54,14 +59,16 @@ namespace WolframWeb
 
             app.UseAuthorization();
 
-            app.UseEndpoints(endpoints =>
+
+            app.UseMvc(routes =>
             {
-                endpoints.MapControllerRoute(
-                    name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
-                endpoints.MapControllerRoute(
-                    name: "areas",
-                    pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
+                routes.MapRoute(
+                  name: "MyArea",
+                  template: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
+
+                routes.MapRoute(
+                   name: "default",
+                   template: "{controller=Home}/{action=Index}/{id?}");
             });
         }
     }
