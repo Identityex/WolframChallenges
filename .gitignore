@@ -7,3 +7,13 @@
 /.vs/WolframChallenges/v16
 /WolframChallenges/bin/Debug/netcoreapp2.2
 /WolframChallengesTests/obj
+/WolframDB/bin/Debug
+/WolframDB/obj/Debug
+/WolframEntities/bin/Debug/netcoreapp3.0
+/WolframEntities/obj/Debug/netcoreapp3.0
+/WolframEntities/obj
+/WolframWeb/bin/Debug/netcoreapp3.0
+/WolframWeb/obj
+/WolframDB/WolframDB.dbmdl
+/WolframDB/WolframDB.jfm
+/WolframDB/WolframDB.refactorlog

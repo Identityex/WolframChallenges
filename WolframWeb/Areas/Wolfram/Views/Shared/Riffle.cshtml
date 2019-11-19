@@ -1,0 +1,134 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+@* TODO : Add a remove button will take 2 minutes but saving time *@
+<style>
+    .input-area{
+        flex-direction: column;
+        padding: 2em;
+    }
+    .list-unstyled{
+        text-align: center;
+        border: 1px solid black;
+    }
+    .output {
+        text-align: center;
+    }
+    .btn {
+        border: 1px solid black;
+    }
+</style>
+
+<div class="row">
+    <div class="col-12 input-group">
+
+        <div class="input-group input-area col-6">
+            <label>Add to Array 1</label>
+            <input type="text" id="array1Input" />
+            <button value="1" class="btn add-btn">Add</button>
+            <div class="row">
+                <ul id="list1" class="list-unstyled p-2 col-12"></ul>
+            </div>
+        </div>
+
+        <div class="input-group input-area col-6">
+            <label>Add to Array 2</label>
+            <input type="text" id="array2Input" />
+            <button value="2" class="btn add-btn">Add</button>
+            <div class="row">
+                <ul id="list2" class="list-unstyled p-2 col-12"></ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="btn-group col-12 p-3">
+        <button id="riffle-btn" class="btn btn-primary col-6 float-left">Riffle Array</button>
+        <button id="deriffle-btn" class="btn btn-primary col-6 float-right p">De-Riffle Array 1</button>
+    </div>
+    <div class="row">
+        <h3 class="output" id="output-area"></h3>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        var array1 = [];
+        var array2 = [];
+        var token = $('input[name="__RequestVerificationToken"]').val();
+        //Save time copying buttons
+        $('.add-btn').click(function () {
+            let arrayNum = $(this).val();
+            let value = $(`#array${arrayNum}Input`).val();
+            $(`#array${arrayNum}Input`).val('');
+            $(`#list${arrayNum}`).append(`<li>${value}</li>`);
+            if (arrayNum == 1) {
+                array1.push(value);
+            }
+            else {
+                array2.push(value);
+            }
+
+        });
+
+        //Riffle the two lists
+        $('#riffle-btn').click(function () {
+            var object = new Object();
+            object.array1 = array1;
+            object.array2 = array2;
+
+            $.ajax({
+                type: "Post",
+                url: '/Wolfram/Wolfram/RiffleArrays',
+                dataType: 'html',
+                contentType: "application/json; charset=utf-8",
+                data: JSON.stringify(object),
+                beforeSend: function (request) {
+                    request.setRequestHeader("RequestVerificationToken", token);
+                },
+                success: function (data) {
+                    $('#output-area').empty();
+                    $('#output-area').append(data);
+                    array1 = [];
+                    array2 = [];
+                    $('#list1').empty();
+                    $('#list2').empty();
+                },
+                error: function (ex) { },
+                complete: function () {
+                }
+            });
+        });
+
+        //Deriffle list 1
+        $('#deriffle-btn').click(function () {
+
+            var object = new Object();
+            object.array1 = array1;
+            object.array2 = null;
+
+            $.ajax({
+                type: "Post",
+                url: '/Wolfram/Wolfram/DeRiffleArray',
+                dataType: 'html',
+                data: JSON.stringify(object),
+                contentType: "application/json; charset=utf-8",
+                beforeSend: function (request) {
+                    request.setRequestHeader("RequestVerificationToken", token);
+                },
+                success: function (data) {
+                    $('#output-area').empty();
+                    $('#output-area').append(data);
+                    array1 = [];
+                    array2 = [];
+                    $('#list1').empty();
+                    $('#list2').empty();
+                },
+                error: function (ex) { },
+                complete: function () {
+                }
+            });
+        });
+
+    });
+</script>
