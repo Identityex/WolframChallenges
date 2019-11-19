@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using WolframChallenges.Challenges;
 
 namespace WolframChallenges.Shared
 {
@@ -24,6 +25,7 @@ namespace WolframChallenges.Shared
             //Register anything we would like to have an injection with
             builder.RegisterType<Utilities>().As<IUtilities>();
             builder.RegisterType<DeriffleList>().AsSelf();
+            builder.RegisterType<Algorithms>().AsSelf();
 
             Container = builder.Build();
 
