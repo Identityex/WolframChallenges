@@ -3,9 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29215.179
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WolframChallenges", "WolframChallenges\WolframChallenges.csproj", "{FD602E50-D7CA-4B66-A400-D099C5B468FC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WolframChallenges", "WolframChallenges\WolframChallenges.csproj", "{FD602E50-D7CA-4B66-A400-D099C5B468FC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WolframChallengesTests", "WolframChallengesTests\WolframChallengesTests.csproj", "{73DAB462-E228-41C6-8F0A-FE77A2A7C237}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WolframChallengesTests", "WolframChallengesTests\WolframChallengesTests.csproj", "{73DAB462-E228-41C6-8F0A-FE77A2A7C237}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WolframWeb", "WolframWeb\WolframWeb.csproj", "{15D6A70E-9A7D-431B-A0D5-7F5033BB7978}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WolframReact", "WolframReact\WolframReact.csproj", "{9CE2C536-9F03-4455-81FE-A31C34849666}"
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "WolframDB", "WolframDB\WolframDB.sqlproj", "{25A986BD-6828-4D61-8C26-D58166633F4A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WolframEntities", "WolframEntities\WolframEntities.csproj", "{34B108A4-42F0-4DAB-A671-351599FD88E5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +29,24 @@ Global
 		{73DAB462-E228-41C6-8F0A-FE77A2A7C237}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{73DAB462-E228-41C6-8F0A-FE77A2A7C237}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{73DAB462-E228-41C6-8F0A-FE77A2A7C237}.Release|Any CPU.Build.0 = Release|Any CPU
+		{15D6A70E-9A7D-431B-A0D5-7F5033BB7978}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{15D6A70E-9A7D-431B-A0D5-7F5033BB7978}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{15D6A70E-9A7D-431B-A0D5-7F5033BB7978}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{15D6A70E-9A7D-431B-A0D5-7F5033BB7978}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9CE2C536-9F03-4455-81FE-A31C34849666}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9CE2C536-9F03-4455-81FE-A31C34849666}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9CE2C536-9F03-4455-81FE-A31C34849666}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9CE2C536-9F03-4455-81FE-A31C34849666}.Release|Any CPU.Build.0 = Release|Any CPU
+		{25A986BD-6828-4D61-8C26-D58166633F4A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{25A986BD-6828-4D61-8C26-D58166633F4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{25A986BD-6828-4D61-8C26-D58166633F4A}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{25A986BD-6828-4D61-8C26-D58166633F4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{25A986BD-6828-4D61-8C26-D58166633F4A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{25A986BD-6828-4D61-8C26-D58166633F4A}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{34B108A4-42F0-4DAB-A671-351599FD88E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{34B108A4-42F0-4DAB-A671-351599FD88E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{34B108A4-42F0-4DAB-A671-351599FD88E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{34B108A4-42F0-4DAB-A671-351599FD88E5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

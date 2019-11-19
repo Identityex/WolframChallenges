@@ -1,0 +1,83 @@
+﻿@model List<Challenges> 
+@{
+    ViewData["Title"] = "ChallengeList";
+}
+
+@Html.AntiForgeryToken()
+
+<style>
+    .border-area{
+        border: 1px solid black;
+        padding: 3em;
+    }
+</style>
+
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>Challenge Name</th>
+                        <th>Challenge Type</th>
+                        <th>Challenge Description</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model != null && Model.Any())
+                    {
+                        @foreach (Challenges challenge in Model)
+                        {
+                            <tr>
+                                <td>@challenge.Name</td>
+                                <td>@challenge.ChallengeType.Type</td>
+                                <td>@challenge.Description</td>
+                                <td>
+                                    <button class="btn btn-primary action-btn" value="@challenge.Name">Check out Challenge</button>
+                                </td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr>
+                            <td>No Challenges input yet</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <div class="border-area col-12" id="ChallengeContainer" >
+
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        var token = $('input[name="__RequestVerificationToken"]').val();
+        //Move to page on btn click
+        $('.action-btn').click(function (event) {
+            let pageName = $(this).val();
+            $('#ChallengeContainer').empty();
+            $.ajax({
+                type: "Post",
+                url: '/Wolfram/Wolfram/' + pageName,
+                dataType: 'html',
+                beforeSend: function (request) {
+                    request.setRequestHeader("RequestVerificationToken", token);
+                },
+                success: function (data) {
+                    $('#ChallengeContainer').append(data);
+                },
+                error: function (ex) { },
+                complete: function () {
+                }
+            });
+        });
+    });
+</script>
